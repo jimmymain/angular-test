@@ -1,5 +1,5 @@
-﻿import { } from "jasmine";
-import { TestBed } from "@angular/core/testing";
+import { } from "jasmine";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import { ContactComponent } from "./ContactComponent";
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 import { ApplicationSettings } from "../../components/ApplicationSettings";
@@ -11,8 +11,12 @@ import { NGXLogger } from "ngx-logger";
 
 describe("contact component",
 	() => {
-		var contactComponent: ContactComponent;
+		var contactComponent: ComponentFixture<ContactComponent>;
 		beforeEach(() => {
+
+      TestBed.resetTestEnvironment();
+      TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+
 			TestBed.configureTestingModule({
 			providers: [
 					{provide: ApplicationSettings, useValue: {}},
@@ -25,13 +29,13 @@ describe("contact component",
 				declarations: [ContactComponent]
 			}).compileComponents();
 			// create
-			var contactComponent = TestBed.get(ContactComponent);
+			contactComponent = TestBed.createComponent(ContactComponent);
 
 		});
 
 		it("save should save something",
 			() => {
-				contactComponent.save();
+				contactComponent.componentInstance.save();
 			});
 
 	});
