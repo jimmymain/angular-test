@@ -119,6 +119,9 @@ module.exports = function (config) {
 			"./wwwroot/**/*.spec.*": ["webpack"]
 		},
 		reporters: ["kjhtml", "spec"],
+        mime: {
+			"text/x-typescript": ["ts"]
+        },
 		port: 9876,
 		colors: true,
 		autoWatch: true,
