@@ -1,0 +1,15 @@
+﻿{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "pretty": true,
+    "lib": [ "es6", "dom" ],
+    "types": ["node", "googlemaps", "jasmine"]
+  },
+  "exclude": [
+    "node_modules", "wwwroot/lib", "obj", "publish"
+  ]
+}

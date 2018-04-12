@@ -1,0 +1,48 @@
+﻿<form novalidate (ngSubmit)="submit()" [ngClass]="{'was-validated': submitted}">
+    <div class="row">
+        <div class="col">
+            <h1>Contacts</h1>
+            <div class="shadow-panel animated fadeIn">
+                <party-list (partySelected)="selectParty($event)" [partyRole]="[]">
+                    <ng-template #heading>
+                    </ng-template>
+                    <ng-template #row let-context="context" let-item="item">
+                    </ng-template>
+                </party-list>
+            </div>
+        </div>
+
+        <div class="col">
+            <div *ngIf="contact">
+                <h1>{{contact?.displayName}}</h1>
+                <div class="shadow-panel animated fadeIn">
+                    <form>
+                        <party-detail [parentForm]="form" [party]="contact"></party-detail>
+                        <div class="b-a-1 p-3 mt-1 mb-1">
+                            <party-roles [party]="contact" (roleSelected)="roleSelected($event)"></party-roles>
+                        </div>
+                    </form>
+                    <div>
+                        <button class="btn btn-primary" (click)="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div *ngIf="selectedRole">
+                <h1>{{roleTypeProvider.roleName(selectedRole)}}</h1>
+                <div class="shadow-panel animated fadeIn">
+                    <div class="b-a-1 p-3">
+                        <party-role [parentForm]="form" [role]="selectedRole"></party-role>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row mt-3" *ngIf="settings.showDebug">
+    <div class="col"><pre>{{form.value | json}}</pre></div>
+    <div class="col"><pre>{{contact | json}}</pre></div>
+</div>
