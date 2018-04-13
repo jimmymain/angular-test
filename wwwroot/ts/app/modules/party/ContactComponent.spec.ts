@@ -1,5 +1,4 @@
-import { } from "jasmine";
-import {ComponentFixture, TestBed, async} from "@angular/core/testing";
+import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { ContactComponent } from "./ContactComponent";
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 import { ApplicationSettings } from "../../components/ApplicationSettings";
@@ -9,23 +8,25 @@ import { RoleTypeProvider } from "../../../domain/Domain/RoleType";
 import { MessageDisplayService } from "../../lib/MessageDisplayService";
 import { NGXLogger } from "ngx-logger";
 
+import {} from "jasmine";
+
 describe("contact component",
 	() => {
 		var contactComponent: ComponentFixture<ContactComponent>;
 		beforeEach(async(() => {
 
-      TestBed.resetTestEnvironment();
-      TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+			TestBed.resetTestEnvironment();
+			TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 			TestBed.configureTestingModule({
-			providers: [
-					{provide: ApplicationSettings, useValue: {}},
-					{provide: PartyService, useValue: {}},
-					{provide: ExpiryService, useValue: {}},
-					{provide: RoleTypeProvider, useValue: {}},
-					{provide: MessageDisplayService, useValue: {}},
-					{provide: NGXLogger, useValue: {}},
-				],				
+				providers: [
+					{ provide: ApplicationSettings, useValue: {} },
+					{ provide: PartyService, useValue: {} },
+					{ provide: ExpiryService, useValue: {} },
+					{ provide: RoleTypeProvider, useValue: {} },
+					{ provide: MessageDisplayService, useValue: {} },
+					{ provide: NGXLogger, useValue: {} },
+				],
 				declarations: [ContactComponent]
 			}).compileComponents();
 			// create
@@ -34,7 +35,7 @@ describe("contact component",
 
 		it("save should save something",
 			() => {
-        contactComponent = TestBed.createComponent(ContactComponent);
+				contactComponent = TestBed.createComponent(ContactComponent);
 				contactComponent.componentInstance.save();
 			});
 

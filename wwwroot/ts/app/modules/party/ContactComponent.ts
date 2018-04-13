@@ -11,9 +11,10 @@ import { ApplicationSettings } from "../../components/ApplicationSettings";
 
 import * as _ from "lodash";
 import 'rxjs/add/operator/catch';
+import * as template from "/ContactComponent.html";
 
 @Component({
-    templateUrl: `./ts/app/modules/party/ContactComponent.html`,
+    template: template
 })
 export class ContactComponent implements OnInit {
     form: FormGroup;

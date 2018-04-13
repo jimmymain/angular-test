@@ -19,16 +19,14 @@ module.exports = function (config) {
 		webpack: {
 			mode: "development",
 			module: {
-				rules: [
-					{
+				rules: [{
 						test: /\.ts$/,
 						use: ["ts-loader"],
 						exclude: /(node_modules)/
 					},
 					{
 						test: /\.scss|\.css$/,
-						use: [
-							{
+						use: [{
 								loader: "style-loader",
 								options: {
 									sourceMap: true
@@ -98,30 +96,43 @@ module.exports = function (config) {
 						}
 					},
 					{
+						test: /\.(html)$/,
+						use: {
+							loader: 'html-loader',
+							options: {
+								attrs: [':data-src']
+							}
+						}
+					},
+					{
 						test: require.resolve("jquery"),
-						use: [
-							{ loader: "expose-loader", options: "jQuery" },
-							{ loader: "expose-loader", options: "$" }
+						use: [{
+								loader: "expose-loader",
+								options: "jQuery"
+							},
+							{
+								loader: "expose-loader",
+								options: "$"
+							}
 						]
 					}
 				]
 			},
-			resolve:
-				{
-					extensions: [".ts", ".js", ".json"],
-					alias: {
-						typeahead: "typeahead.js"
-					}
-				},
+			resolve: {
+				extensions: [".ts", ".js", ".json"],
+				alias: {
+					typeahead: "typeahead.js"
+				}
+			},
 		},
 		preprocessors: {
 			"./base.spec.ts": ["webpack"],
 			"./wwwroot/**/*.spec.*": ["webpack"]
 		},
 		reporters: ["kjhtml", "spec"],
-        mime: {
+		mime: {
 			"text/x-typescript": ["ts"]
-        },
+		},
 		port: 9876,
 		colors: true,
 		autoWatch: true,
